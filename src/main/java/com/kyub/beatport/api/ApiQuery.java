@@ -15,12 +15,13 @@ public class ApiQuery {
 		return facets.keySet();
 	}
 
-	public Object addFilter(String field, Object value) {
-		return facets.put(field, value);
+	public ApiQuery addFilter(String field, Object value) {
+		 facets.put(field, value);
+		 return this;
 	}
 
-	public Object removeFilter(Object field) {
-		return facets.remove(field);
+	public void removeFilter(Object field) {
+		 facets.remove(field);
 	}
 
 	protected String buildFacetParams() {

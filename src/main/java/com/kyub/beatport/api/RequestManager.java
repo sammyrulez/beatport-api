@@ -14,7 +14,7 @@ public class RequestManager {
 		 
 		
  
-		String encodedParams = urlParameters != null ? "?"+urlParameters:"";
+		String encodedParams = urlParameters != null && !urlParameters.isEmpty() ? "?"+urlParameters:"";
 		URL obj = new URL(targetURL+encodedParams );
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
  
@@ -52,7 +52,7 @@ public class RequestManager {
  		String urlParameters =
         "fName=" + URLEncoder.encode("???", "UTF-8") +
         "&lName=" + URLEncoder.encode("???", "UTF-8")
-	 */
+	
 	
 	public static String excutePost(String targetURL, String urlParameters)
 	  {
@@ -105,5 +105,5 @@ public class RequestManager {
 	      }
 	    }
 	  }
-
+*/
 }
