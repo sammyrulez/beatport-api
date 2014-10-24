@@ -3,7 +3,7 @@ beatport.com api client
 
 This is Java client library for beatport.com api
 
-To use this library you need to register an account at beatport.com and request a key/secret value.
+To use this library you need to register an account at http://beatport.com and request a key/secret value.
 
 Detalis at https://oauth-api.beatport.com/
 
@@ -17,7 +17,7 @@ String authorizationUrl =  authorizationKey.getAuthorizationUrl(); // user must 
 final OauthHolder auth = authService.auth(code ,authorizationKey);
 
 ```
-"""OauthHolder""" has a method """public Serializable persistableToken() """ that let you store the token for invoke the service later on
+**OauthHolder** has a method **public Serializable persistableToken()** that let you store the token for invoke the service later on
 
 ```java
 final BeatportService service = new BeatportService(token);
