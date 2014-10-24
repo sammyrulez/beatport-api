@@ -18,19 +18,21 @@ public class BeatportAuthService {
 	}
 
 
-	public String getAuthorizationUrl() {
+	public AuthorizationKey getAuthorizationKey() {
 		final OAuthService service = buildService(apiKey, apiSecret);
 		final Token requestToken = service.getRequestToken();
 		final String authorizationUrl = service.getAuthorizationUrl(requestToken);
-		return authorizationUrl;
+		return new AuthorizationKey(authorizationUrl, requestToken);
 	}
 	
+	public OauthHolder auth( String code, AuthorizationKey key){		
+		 return this.auth(code, key.getRequestToken());
+	}
 	
-	public OauthHolder auth( String code, Token requestToken){
+	protected OauthHolder auth( String code, Token requestToken){
 		final OAuthService service = buildService(apiKey, apiSecret);	
-		 Verifier verifier = new Verifier(code);		 
-		 Token accessToken = service.getAccessToken(requestToken, verifier);
-		
+		final Verifier verifier = new Verifier(code);		 
+		final Token accessToken = service.getAccessToken(requestToken, verifier);
 		return new OauthHolder(accessToken, service);
 	}
 
